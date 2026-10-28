@@ -1407,6 +1407,7 @@ class DagFileProcessorManager(LoggingMixin):
                     if self.api_client is not None:
                         self._discard_unusable_bundle_source(bundle.name)
                         self._delay_bundle_listing_retry(bundle.name)
+                        self._bundles_needing_refresh.add(bundle.name)
                     else:
                         self._delay_draining_refresh_retry(bundle, known_files.get(bundle.name, ()))
                     continue
